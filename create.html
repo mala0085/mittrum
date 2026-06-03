@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MittRum - Posta ett nytt rum</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background flex flex-col min-h-screen text-dark-text">
+
+    <!-- HEADER -->
+    <header class="bg-card shadow-sm border-b border-border-light sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-6 py-5">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="logo text-3xl font-semibold tracking-tight">
+                    MittRum
+                </a>
+                
+                <button id="menuToggle" class="text-3xl text-primary hover:text-accent transition-colors focus:outline-none">
+                    ☰
+                </button>
+
+                <ul id="navMenu" class="nav-menu items-center gap-8 text-base font-medium">
+                    <li><a href="index.html" class="nav-link">Hem</a></li>
+                    <li><a href="explore.html" class="nav-link">Utforska rum</a></li>
+                    <li><a href="create.html" class="nav-link">+ Posta rum</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 relative py-12">
+        
+        <!-- Dekorativa sidobilder -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute left-0 top-0 bottom-0 w-1/5 hidden lg:block">
+                <img src="images/img_hero1.jpg" class="h-full w-full object-cover opacity-25" alt="">
+            </div>
+            <div class="absolute right-0 top-0 bottom-0 w-1/5 hidden lg:block">
+                <img src="images/img_hero3.jpg" class="h-full w-full object-cover opacity-25" alt="">
+            </div>
+        </div>
+
+        <div class="max-w-2xl mx-auto px-6 lg:px-8 relative z-10">
+            
+            <h1 class="hero-title text-dark-text mb-12 text-center">Posta ett nytt rum</h1>
+
+            <div class="bg-surface rounded-3xl shadow-sm p-8 md:p-12">
+                
+                <form id="roomForm" class="space-y-8">
+                    
+                    <!-- Rubrik -->
+                    <div>
+                        <label class="block text-sm font-medium text-dark-text mb-2">Rubrik på ditt rum</label>
+                        <input 
+                            type="text" 
+                            id="roomTitle"
+                            placeholder="T.ex. Ljust vardagsrum i 50-talshus" 
+                            class="w-full bg-surface accent-border border-2 rounded-2xl px-6 py-4 focus:outline-none placeholder:text-secondary-text">
+                    </div>
+
+                    <!-- Beskrivning -->
+                    <div>
+                        <label class="block text-sm font-medium text-dark-text mb-2">Beskrivning och vad du behöver hjälp med</label>
+                        <textarea 
+                            rows="7"
+                            placeholder="Berätta om rummet och vilka tips du söker..."
+                            class="w-full bg-surface accent-border border-2 rounded-2xl px-6 py-4 focus:outline-none resize-y"></textarea>
+                    </div>
+
+                    <!-- Bilder -->
+                    <div>
+                        <label class="block text-sm font-medium text-dark-text mb-2">Ladda upp bilder (max 5)</label>
+                        <div class="accent-border border-2 border-dashed rounded-2xl p-10 text-center hover:border-primary transition-colors">
+                            <p class="text-secondary-text">Klicka eller dra bilder hit</p>
+                            <input type="file" multiple accept="image/*" class="hidden">
+                        </div>
+                    </div>
+
+                    <!-- Kategorier -->
+                    <div>
+                        <label class="block text-sm font-medium text-dark-text mb-3">Vad typ av rum är det?</label>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="tag bg-surface border accent-border px-5 py-2 rounded-2xl cursor-pointer hover:border-primary hover:text-primary-dark transition-colors">Vardagsrum</span>
+                            <span class="tag bg-surface border accent-border px-5 py-2 rounded-2xl cursor-pointer hover:border-primary hover:text-primary-dark transition-colors">Kök</span>
+                            <span class="tag bg-surface border accent-border px-5 py-2 rounded-2xl cursor-pointer hover:border-primary hover:text-primary-dark transition-colors">Sovrum</span>
+                            <span class="tag bg-surface border accent-border px-5 py-2 rounded-2xl cursor-pointer hover:border-primary hover:text-primary-dark transition-colors">Badrum</span>
+                            <span class="tag bg-surface border accent-border px-5 py-2 rounded-2xl cursor-pointer hover:border-primary hover:text-primary-dark transition-colors">Matplats</span>
+                        </div>
+                    </div>
+
+                    <!-- Skicka-knapp -->
+                    <button 
+                        type="submit"
+                        class="btn-primary w-full font-medium py-5 rounded-2xl text-lg">
+                        Publicera rummet
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- SUCCESS MODAL -->
+    <div id="successModal" class="hidden fixed inset-0 bg-primary-dark/70 flex items-center justify-center z-[100]">
+        <div class="bg-surface rounded-3xl shadow-xl max-w-md w-full mx-4 p-8 text-center">
+            <div class="mx-auto w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 text-5xl">
+                <span style="color: var(--color-accent);">✔︎</span>
+            </div>
+            
+            <h2 class="text-2xl font-semibold text-dark-text mb-3">Rummet är publicerat!</h2>
+            <p id="modalRoomTitle" class="text-lg text-secondary-text mb-8"></p>
+            
+            <button onclick="closeModal()" 
+                    class="btn-primary w-full py-4 rounded-2xl text-lg font-medium">
+                Klar
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto bg-card py-10 text-center text-secondary-text border-t border-[#e8e3d8]">
+        <p>&copy; MittRum VT26 - Ett projekt i responsiv webbdesign</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        tailwind.config = { important: true }
+    </script>
+</body>
+</html>
