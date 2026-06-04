@@ -102,4 +102,7 @@ function closeModal() {
     // Töm formuläret
     const form = document.getElementById('roomForm');
     if (form) form.reset();
+
+    //Till utforska när modal stängs
+    window.location.href = "explore.html";
 }
