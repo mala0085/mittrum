@@ -1,5 +1,5 @@
 /* =====================
-   MITTRUM - KÄLLFIL (/src/style.css)
+   MITTRUM - KÄLLFIL 
    ===================== */
 
    @import "tailwindcss";
@@ -227,7 +227,7 @@ a.logo:hover {
 }
 
 /* =====================
-   NAVIGATION LINKS
+   NAVIGATION
    ===================== */
 
    .nav-link,
@@ -239,7 +239,7 @@ a.logo:hover {
    .nav-link:hover,
    .nav-menu a:hover {
      color: var(--color-primary-dark);
-     background-color: transparent;   /* Tar bort den grå rutan */
+     background-color: transparent;   
    }
    
    /* Hamburger */
@@ -257,14 +257,14 @@ a.logo:hover {
    BORDER STYLES - KONSEKVENTA
    ===================== */
 
-/* Ljus border för header, footer och subtila linjer */
+/* Ljus border för header, footer och linjer */
 .border-light,
 .border-border-light,
 header.border-b {
     border-color: var(--color-border-light);
 }
 
-/* Primär border för formulär, input, taggar etc. */
+/* Primär border för formulär */
 .border-primary,
 .border-primary\/60,
 .border-primary\/70,
@@ -282,7 +282,7 @@ header.border-b {
 
 .tag.active {
   border-color: var(--color-primary);
-  background-color: rgb(139 90 43 / 0.08);   /* Lätt ton av primary */
+  background-color: rgb(139 90 43 / 0.08);
 }
 
 /* Specifikt för bilduppladdning */
