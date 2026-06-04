@@ -1,9 +1,9 @@
 // js/script.js
 console.log("✅ MittRum script.js är laddad");
 
-// =====================
+
 // HERO SLIDER
-// =====================
+
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.hero-slide');
     let current = 0;
@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// =====================
-// HAMBURGER MENU - Förbättrad version
-// =====================
+
+// HAMBURGERMENY 
+
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Extra: Stäng meny vid Escape-tangent
+        // Stäng meny vid Escape-tangent
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 navMenu.classList.remove('active');
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Kategori-taggar - klickbar och aktiv markering
+// Kategori-knappar
 document.addEventListener('DOMContentLoaded', () => {
     const tags = document.querySelectorAll('.tag');
     
